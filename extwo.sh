@@ -5,6 +5,7 @@ ROUNDS=0
 DRAWS=0
 
 #Color setup
+A="New change"
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 BLUE='\033[0;34m'
