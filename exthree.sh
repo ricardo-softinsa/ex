@@ -3,7 +3,6 @@
 HOLDER=()
 
 #Color Setup
-A="New change"
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 PURPLE='\033[0;35m'
