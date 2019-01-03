@@ -4,6 +4,9 @@ CPUWINS=0
 ROUNDS=0
 DRAWS=0
 
+#Something new
+New="New String"
+
 #Color setup
 GREEN='\033[0;32m'
 RED='\033[0;31m'
