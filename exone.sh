@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#Something new
-New="New String"
 #Color setup
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -9,14 +7,12 @@ NONE='\033[0m'
 
 #Check if number or star on our ballot matches the winner combinations 
 checkequal(){
-    seeking=$1
+    SEEKING=$1
     shift
     array=("$@")
     abc=1
     for element in "${array[@]}"; do
-        #echo -e "Element: $element"
-        #echo -e "\nSeeking: $seeking\n"
-        if [[ $element == $seeking ]]; then
+        if [[ $element == $SEEKING ]]; then
             abc=0
             break
         fi
@@ -62,10 +58,8 @@ for i in 1 2 3;
                         checkequal $T ${SORTED_WNUMBER[@]}  && TOTAL=$((TOTAL+5000)) NUMBERS=$((NUMBERS+1)) || CONTROLO=0
                     else
                         if [[ $T -lt 10 ]]; then
-                            #A=10
                             echo -e " $T \c"
                         else
-                            #A=10
                             echo -e "$T \c"
                         fi
                     fi
@@ -85,10 +79,8 @@ for i in 1 2 3;
                         checkequal $G ${SORTER_WSTARS[@]} && TOTAL=$((TOTAL+1000)) STARS=$((STARS+1)) || CONTROLO=0
                     else
                         if [[ $G -lt 10 ]]; then
-                            #A=10
                             echo -e " $G \c"
                         else
-                            #A=10
                             echo -e "$G \c"
                         fi
                     fi

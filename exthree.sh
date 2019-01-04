@@ -2,9 +2,6 @@
 
 HOLDER=()
 
-#Something new
-New="New String"
-
 #Color Setup
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -131,8 +128,8 @@ function INTERACTIVEMODE(){
         echo "4- Highlight the keyword"
         echo "5- Get Stats"
         echo "0- Quit"
-        read choice
-        case "$choice" in
+        read CHOICE
+        case "$CHOICE" in
             1)
                 SHOWUSAGE
                 continue

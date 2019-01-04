@@ -4,9 +4,6 @@ CPUWINS=0
 ROUNDS=0
 DRAWS=0
 
-#Something new
-New="New String"
-
 #Color setup
 GREEN='\033[0;32m'
 RED='\033[0;31m'
@@ -56,35 +53,35 @@ while true;
     do
         echo "--------------------------------------"
         echo "Rock, Paper, Scissors?"
-        read first_input
+        read FIRST_INPUT
 
         #Transforms input into lowercase to avoid any possible conflict
-        user_input=${first_input,,}
+        USER_INPUT=${FIRST_INPUT,,}
 
         #We'll start all possible values in an array, shuffle it and then shuffle through values {0-1-2} and store it in a variable.
         #This value will be the index of the element the CPU will chose in that particular round
-        holder=('rock' 'paper' 'scissors')
-        holder=($(shuf -e "${holder[@]}"))
+        HOLDER=('rock' 'paper' 'scissors')
+        HOLDER=($(shuf -e "${HOLDER[@]}"))
         var=`shuf -i 0-2 -n 1`
 
         #Now let's see who wins
-        if [[ $user_input == "rock" ]] || [[ $user_input == "r" ]] || [[ $user_input == "paper" ]] || [[ $user_input == "p" ]] || [[ $user_input == "scissors" ]] || [[ $user_input == "s" ]] ; then
-            if [[ $user_input == "rock" ]] || [[ $user_input == "r" ]]; then
+        if [[ $USER_INPUT == "rock" ]] || [[ $USER_INPUT == "r" ]] || [[ $USER_INPUT == "paper" ]] || [[ $USER_INPUT == "p" ]] || [[ $USER_INPUT == "scissors" ]] || [[ $USER_INPUT == "s" ]] ; then
+            if [[ $USER_INPUT == "rock" ]] || [[ $USER_INPUT == "r" ]]; then
                 CHOICE="Rock"
-            elif [[ $user_input == "paper" ]] || [[ $user_input == "p" ]]; then
+            elif [[ $USER_INPUT == "paper" ]] || [[ $USER_INPUT == "p" ]]; then
                 CHOICE="Paper"
             else
                 CHOICE="Scissors"
             fi
             echo -e "\nYou chose: $CHOICE"
-            echo -e "Opponent chose: ${holder[var]^} \n"
+            echo -e "Opponent chose: ${HOLDER[var]^} \n"
         fi
-        if [[ -n $user_input ]]; then
-            if [ $user_input == "rock" ] || [[ $user_input == "r" ]]; then
-                if [ ${holder[var]} == "rock" ]; then
+        if [[ -n $USER_INPUT ]]; then
+            if [ $USER_INPUT == "rock" ] || [[ $USER_INPUT == "r" ]]; then
+                if [ ${HOLDER[var]} == "rock" ]; then
                     echo -e "${BLUE}It is a draw${NONE}\n"
                     ROUNDS=$((ROUNDS+1))
-                elif [ ${holder[var]} == "paper" ]; then
+                elif [ ${HOLDER[var]} == "paper" ]; then
                     echo -e "${RED}You lost${NONE}\n"
                     CPUWINS=$((CPUWINS+1))
                     ROUNDS=$((ROUNDS+1))
@@ -102,8 +99,8 @@ while true;
                     fi
                 fi
 
-            elif [ $user_input == "paper" ] || [[ $user_input == "p" ]]; then
-                if [ ${holder[var]} == "rock" ]; then
+            elif [ $USER_INPUT == "paper" ] || [[ $USER_INPUT == "p" ]]; then
+                if [ ${HOLDER[var]} == "rock" ]; then
                     echo -e "${GREEN}You won\n${NONE}"
                     YOURWINS=$((YOURWINS+1))
                     ROUNDS=$((ROUNDS+1))
@@ -111,7 +108,7 @@ while true;
                         STATS "won"
                         break
                     fi
-                elif [ ${holder[var]} == "paper" ]; then
+                elif [ ${HOLDER[var]} == "paper" ]; then
                     echo -e "${BLUE}It is a draw${NONE}\n"
                     ROUNDS=$((ROUNDS+1))
                 else
@@ -124,8 +121,8 @@ while true;
                     fi
                 fi
 
-            elif [ $user_input == "scissors" ] || [[ $user_input == "s" ]]; then
-                if [ ${holder[var]} == "rock" ]; then
+            elif [ $USER_INPUT == "scissors" ] || [[ $USER_INPUT == "s" ]]; then
+                if [ ${HOLDER[var]} == "rock" ]; then
                     echo -e "${RED}You lost${NONE}\n"
                     CPUWINS=$((CPUWINS+1))
                     ROUNDS=$((ROUNDS+1))
@@ -133,7 +130,7 @@ while true;
                         STATS "lost"
                         break
                     fi
-                elif [ ${holder[var]} == "paper" ]; then
+                elif [ ${HOLDER[var]} == "paper" ]; then
                     echo -e "${GREEN}You won${NONE}\n"
                     YOURWINS=$((YOURWINS+1))
                     ROUNDS=$((ROUNDS+1))
